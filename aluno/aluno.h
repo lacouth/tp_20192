@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include "disciplina.h"
 
 using namespace std;
 
@@ -6,18 +8,21 @@ class Aluno{
     private:
         string nome;
         string matricula;
-        float media;
+        vector<Disciplina> disciplinas;
+        
+        
     public:
 
         Aluno(string n, float m);
+        Aluno();
         void setNome(string n);
         string getNome();
 
         void setMatricula(string m);
         string getMatricula();
 
-        void setMedia(float m);
-        float getMedia();
+        // void setMedia(float m);
+        // float getMedia();
 
         void obterDados();
         void mostrarDados();

@@ -14,5 +14,6 @@ class Ponto {
 
         int getX();
         int getY();
+        string quadrante();
         
 };

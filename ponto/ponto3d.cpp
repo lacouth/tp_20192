@@ -11,3 +11,6 @@ void Ponto3d::show(){
     cout<<y<<endl;
     cout<<z<<endl;
 }
+
+
+int Ponto2d::distancia(Ponto2d a);
