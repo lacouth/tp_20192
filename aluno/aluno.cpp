@@ -45,7 +45,7 @@ void Aluno::obterDados(){
     cin >> temp;
     setNome(temp);
     string op2;
-    string op;
+    string op; 
     do{
         Disciplina disciplina;
         string d;
