@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
@@ -17,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -31,6 +33,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionSalvar;
+    QAction *actionCarregar;
     QWidget *centralWidget;
     QTabWidget *tabWidget;
     QWidget *tab;
@@ -53,6 +57,7 @@ public:
     QPushButton *btnCadastro;
     QWidget *tab_2;
     QMenuBar *menuBar;
+    QMenu *menuArquivo;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -61,6 +66,10 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(612, 510);
+        actionSalvar = new QAction(MainWindow);
+        actionSalvar->setObjectName(QString::fromUtf8("actionSalvar"));
+        actionCarregar = new QAction(MainWindow);
+        actionCarregar->setObjectName(QString::fromUtf8("actionCarregar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
@@ -168,6 +177,7 @@ public:
 
         btnCadastro = new QPushButton(widget);
         btnCadastro->setObjectName(QString::fromUtf8("btnCadastro"));
+        btnCadastro->setStyleSheet(QString::fromUtf8("background-color:rgb(114, 159, 207)"));
 
         verticalLayout_2->addWidget(btnCadastro);
 
@@ -179,6 +189,8 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 612, 25));
+        menuArquivo = new QMenu(menuBar);
+        menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -186,6 +198,10 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
+
+        menuBar->addAction(menuArquivo->menuAction());
+        menuArquivo->addAction(actionSalvar);
+        menuArquivo->addAction(actionCarregar);
 
         retranslateUi(MainWindow);
 
@@ -198,6 +214,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionSalvar->setText(QCoreApplication::translate("MainWindow", "Salvar", nullptr));
+        actionCarregar->setText(QCoreApplication::translate("MainWindow", "Carregar", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tabela->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Nome", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tabela->horizontalHeaderItem(1);
@@ -220,6 +238,7 @@ public:
         btnCadastro->setText(QCoreApplication::translate("MainWindow", "Cadastrar", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Cadastro", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Dados", nullptr));
+        menuArquivo->setTitle(QCoreApplication::translate("MainWindow", "Arquivo", nullptr));
     } // retranslateUi
 
 };

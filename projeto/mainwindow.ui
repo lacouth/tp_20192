@@ -161,6 +161,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnCadastro">
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(114, 159, 207)</string>
+         </property>
          <property name="text">
           <string>Cadastrar</string>
          </property>
@@ -185,6 +188,14 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="actionSalvar"/>
+    <addaction name="actionCarregar"/>
+   </widget>
+   <addaction name="menuArquivo"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -195,6 +206,16 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSalvar">
+   <property name="text">
+    <string>Salvar</string>
+   </property>
+  </action>
+  <action name="actionCarregar">
+   <property name="text">
+    <string>Carregar</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
