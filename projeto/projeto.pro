@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    aluno.cpp
+    aluno.cpp \
+    turma.cpp
 
 HEADERS  += mainwindow.h \
-    aluno.h
+    aluno.h \
+    turma.h
 
 FORMS    += mainwindow.ui

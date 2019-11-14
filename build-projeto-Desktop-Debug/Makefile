@@ -54,10 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../projeto/main.cpp \
 		../projeto/mainwindow.cpp \
-		../projeto/aluno.cpp moc_mainwindow.cpp
+		../projeto/aluno.cpp \
+		../projeto/turma.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		aluno.o \
+		turma.o \
 		moc_mainwindow.o
 DIST          = /opt/Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/common/unix.conf \
@@ -255,9 +257,11 @@ DIST          = /opt/Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
 		../projeto/projeto.pro ../projeto/mainwindow.h \
-		../projeto/aluno.h ../projeto/main.cpp \
+		../projeto/aluno.h \
+		../projeto/turma.h ../projeto/main.cpp \
 		../projeto/mainwindow.cpp \
-		../projeto/aluno.cpp
+		../projeto/aluno.cpp \
+		../projeto/turma.cpp
 QMAKE_TARGET  = projeto
 DESTDIR       = 
 TARGET        = projeto
@@ -677,8 +681,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../projeto/mainwindow.h ../projeto/aluno.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../projeto/main.cpp ../projeto/mainwindow.cpp ../projeto/aluno.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../projeto/mainwindow.h ../projeto/aluno.h ../projeto/turma.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../projeto/main.cpp ../projeto/mainwindow.cpp ../projeto/aluno.cpp ../projeto/turma.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../projeto/mainwindow.ui $(DISTDIR)/
 
 
@@ -823,6 +827,8 @@ moc_mainwindow.cpp: ../projeto/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		../projeto/aluno.h \
 		moc_predefs.h \
 		/opt/Qt/5.13.0/gcc_64/bin/moc
@@ -958,6 +964,8 @@ main.o: ../projeto/main.cpp ../projeto/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		../projeto/aluno.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
@@ -1077,9 +1085,14 @@ mainwindow.o: ../projeto/mainwindow.cpp ../projeto/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		../projeto/aluno.h \
 		ui_mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QAction \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1106,6 +1119,11 @@ mainwindow.o: ../projeto/mainwindow.cpp ../projeto/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qheaderview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
@@ -1114,17 +1132,19 @@ mainwindow.o: ../projeto/mainwindow.cpp ../projeto/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QMenu \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qmenu.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QMenuBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qmenubar.h \
-		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qmenu.h \
-		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qaction.h \
-		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QStatusBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qstatusbar.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QTabWidget \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtableview.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QToolBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout \
@@ -1165,6 +1185,49 @@ aluno.o: ../projeto/aluno.cpp ../projeto/aluno.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o aluno.o ../projeto/aluno.cpp
+
+turma.o: ../projeto/turma.cpp ../projeto/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qpoint.h \
+		../projeto/aluno.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o turma.o ../projeto/turma.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -39,7 +40,7 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab;
     QTableWidget *tabela;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -55,7 +56,14 @@ public:
     QLabel *label_4;
     QComboBox *inputCurso;
     QPushButton *btnCadastro;
+    QPushButton *btn_ordernarNome;
     QWidget *tab_2;
+    QGroupBox *groupBox;
+    QLabel *maiorNota;
+    QGroupBox *groupBox_2;
+    QLabel *menorNota;
+    QGroupBox *groupBox_3;
+    QLabel *media;
     QMenuBar *menuBar;
     QMenu *menuArquivo;
     QToolBar *mainToolBar;
@@ -65,7 +73,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(612, 510);
+        MainWindow->resize(612, 583);
         actionSalvar = new QAction(MainWindow);
         actionSalvar->setObjectName(QString::fromUtf8("actionSalvar"));
         actionCarregar = new QAction(MainWindow);
@@ -74,7 +82,7 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(10, 10, 591, 431));
+        tabWidget->setGeometry(QRect(10, 10, 591, 491));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         tabela = new QTableWidget(tab);
@@ -93,10 +101,10 @@ public:
         tabela->setObjectName(QString::fromUtf8("tabela"));
         tabela->setGeometry(QRect(10, 200, 561, 151));
         tabela->horizontalHeader()->setStretchLastSection(true);
-        widget = new QWidget(tab);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 20, 561, 176));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(tab);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 20, 561, 176));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
@@ -107,12 +115,12 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         horizontalLayout->addWidget(label);
 
-        inputNome = new QLineEdit(widget);
+        inputNome = new QLineEdit(layoutWidget);
         inputNome->setObjectName(QString::fromUtf8("inputNome"));
 
         horizontalLayout->addWidget(inputNome);
@@ -123,12 +131,12 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        inputMat = new QLineEdit(widget);
+        inputMat = new QLineEdit(layoutWidget);
         inputMat->setObjectName(QString::fromUtf8("inputMat"));
 
         horizontalLayout_2->addWidget(inputMat);
@@ -139,12 +147,12 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         horizontalLayout_3->addWidget(label_3);
 
-        inputMedia = new QLineEdit(widget);
+        inputMedia = new QLineEdit(layoutWidget);
         inputMedia->setObjectName(QString::fromUtf8("inputMedia"));
 
         horizontalLayout_3->addWidget(inputMedia);
@@ -155,12 +163,12 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
         horizontalLayout_4->addWidget(label_4);
 
-        inputCurso = new QComboBox(widget);
+        inputCurso = new QComboBox(layoutWidget);
         inputCurso->addItem(QString());
         inputCurso->addItem(QString());
         inputCurso->addItem(QString());
@@ -175,15 +183,36 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
-        btnCadastro = new QPushButton(widget);
+        btnCadastro = new QPushButton(layoutWidget);
         btnCadastro->setObjectName(QString::fromUtf8("btnCadastro"));
         btnCadastro->setStyleSheet(QString::fromUtf8("background-color:rgb(114, 159, 207)"));
 
         verticalLayout_2->addWidget(btnCadastro);
 
+        btn_ordernarNome = new QPushButton(tab);
+        btn_ordernarNome->setObjectName(QString::fromUtf8("btn_ordernarNome"));
+        btn_ordernarNome->setGeometry(QRect(10, 360, 151, 28));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
+        groupBox = new QGroupBox(tab_2);
+        groupBox->setObjectName(QString::fromUtf8("groupBox"));
+        groupBox->setGeometry(QRect(10, 10, 551, 91));
+        maiorNota = new QLabel(groupBox);
+        maiorNota->setObjectName(QString::fromUtf8("maiorNota"));
+        maiorNota->setGeometry(QRect(220, 30, 111, 61));
+        groupBox_2 = new QGroupBox(tab_2);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+        groupBox_2->setGeometry(QRect(10, 120, 551, 101));
+        menorNota = new QLabel(groupBox_2);
+        menorNota->setObjectName(QString::fromUtf8("menorNota"));
+        menorNota->setGeometry(QRect(191, 29, 111, 61));
+        groupBox_3 = new QGroupBox(tab_2);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        groupBox_3->setGeometry(QRect(10, 259, 551, 111));
+        media = new QLabel(groupBox_3);
+        media->setObjectName(QString::fromUtf8("media"));
+        media->setGeometry(QRect(190, 30, 101, 71));
         tabWidget->addTab(tab_2, QString());
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -236,7 +265,14 @@ public:
         inputCurso->setItemText(3, QCoreApplication::translate("MainWindow", "Sistema para Internet", nullptr));
 
         btnCadastro->setText(QCoreApplication::translate("MainWindow", "Cadastrar", nullptr));
+        btn_ordernarNome->setText(QCoreApplication::translate("MainWindow", "Ordenar por nome", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Cadastro", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "Maior Nota", nullptr));
+        maiorNota->setText(QString());
+        groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Menor Nota", nullptr));
+        menorNota->setText(QString());
+        groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "M\303\251dia", nullptr));
+        media->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Dados", nullptr));
         menuArquivo->setTitle(QCoreApplication::translate("MainWindow", "Arquivo", nullptr));
     } // retranslateUi

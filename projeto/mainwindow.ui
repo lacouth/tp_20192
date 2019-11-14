@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>612</width>
-    <height>510</height>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>591</width>
-      <height>431</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -68,7 +68,7 @@
        </property>
       </column>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -171,11 +171,102 @@
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="btn_ordernarNome">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>360</y>
+        <width>151</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ordenar por nome</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
       <string>Dados</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>551</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Maior Nota</string>
+      </property>
+      <widget class="QLabel" name="maiorNota">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>30</y>
+         <width>111</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>551</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Menor Nota</string>
+      </property>
+      <widget class="QLabel" name="menorNota">
+       <property name="geometry">
+        <rect>
+         <x>191</x>
+         <y>29</y>
+         <width>111</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>259</y>
+        <width>551</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Média</string>
+      </property>
+      <widget class="QLabel" name="media">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>30</y>
+         <width>101</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>
