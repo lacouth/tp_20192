@@ -286,7 +286,13 @@
     <addaction name="actionSalvar"/>
     <addaction name="actionCarregar"/>
    </widget>
+   <widget class="QMenu" name="menuDados">
+    <property name="title">
+     <string>Dados</string>
+    </property>
+   </widget>
    <addaction name="menuArquivo"/>
+   <addaction name="menuDados"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -301,10 +307,16 @@
    <property name="text">
     <string>Salvar</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionCarregar">
    <property name="text">
     <string>Carregar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
  </widget>

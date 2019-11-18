@@ -3,6 +3,9 @@
 
 #include <QVector>
 #include <algorithm>
+#include <QFile>
+#include <QStringList>
+#include <QDebug>
 #include "aluno.h"
 
 class Turma
@@ -20,6 +23,8 @@ public:
     void ordenarPorNome();
     int size();
     Aluno operator[](int indice);
+    void salvarDados(QString file);
+    void carregarDados(QString file);
 };
 
 bool compararPorMedia(Aluno a, Aluno b);

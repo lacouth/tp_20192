@@ -50,6 +50,41 @@ Aluno Turma::operator[](int indice)
     return turma[indice];
 }
 
+void Turma::salvarDados(QString file)
+{
+    QFile arquivo(file);
+
+    arquivo.open(QIODevice::WriteOnly);
+
+    for(auto a:turma){
+        QString linha = a.getNome() + "," + a.getMatricula() + "," + QString::number(a.getMedia()) + "," + a.getCurso()+"\n";
+        arquivo.write(linha.toLocal8Bit());
+    }
+    arquivo.close();
+
+}
+
+void Turma::carregarDados(QString file)
+{
+    QFile arquivo(file);
+    arquivo.open(QIODevice::ReadOnly);
+
+    QString linha;
+    QStringList dados;
+    while(!arquivo.atEnd()){
+        Aluno temp;
+        linha = arquivo.readLine();
+        dados = linha.split(",");
+        temp.setNome(dados[0]);
+        temp.setMatricula(dados[1]);
+        temp.setMedia(dados[2].toDouble());
+        temp.setCurso(dados[3]);
+        inserirAluno(temp);
+    }
+    arquivo.close();
+
+}
+
 bool compararPorMedia(Aluno a, Aluno b)
 {
     return a.getMedia()<b.getMedia();

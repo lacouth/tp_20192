@@ -66,6 +66,7 @@ public:
     QLabel *media;
     QMenuBar *menuBar;
     QMenu *menuArquivo;
+    QMenu *menuDados;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -220,6 +221,8 @@ public:
         menuBar->setGeometry(QRect(0, 0, 612, 25));
         menuArquivo = new QMenu(menuBar);
         menuArquivo->setObjectName(QString::fromUtf8("menuArquivo"));
+        menuDados = new QMenu(menuBar);
+        menuDados->setObjectName(QString::fromUtf8("menuDados"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -229,6 +232,7 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuArquivo->menuAction());
+        menuBar->addAction(menuDados->menuAction());
         menuArquivo->addAction(actionSalvar);
         menuArquivo->addAction(actionCarregar);
 
@@ -244,7 +248,13 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionSalvar->setText(QCoreApplication::translate("MainWindow", "Salvar", nullptr));
+#if QT_CONFIG(shortcut)
+        actionSalvar->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionCarregar->setText(QCoreApplication::translate("MainWindow", "Carregar", nullptr));
+#if QT_CONFIG(shortcut)
+        actionCarregar->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+L", nullptr));
+#endif // QT_CONFIG(shortcut)
         QTableWidgetItem *___qtablewidgetitem = tabela->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Nome", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tabela->horizontalHeaderItem(1);
@@ -275,6 +285,7 @@ public:
         media->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Dados", nullptr));
         menuArquivo->setTitle(QCoreApplication::translate("MainWindow", "Arquivo", nullptr));
+        menuDados->setTitle(QCoreApplication::translate("MainWindow", "Dados", nullptr));
     } // retranslateUi
 
 };

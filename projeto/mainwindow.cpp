@@ -68,3 +68,23 @@ void MainWindow::on_btn_ordernarNome_clicked()
      inserirNaTabela(turma[i],i);
  }
 }
+
+void MainWindow::on_actionSalvar_triggered()
+{
+   QString filename;
+   filename = QFileDialog::getSaveFileName(this,"Salvar Arquivo","","*.csv");
+   turma.salvarDados(filename);
+}
+
+void MainWindow::on_actionCarregar_triggered()
+{
+   QString filename;
+   filename = QFileDialog::getOpenFileName(this, "Abrir Arquivo","","*.csv");
+   turma.carregarDados(filename);
+
+   for(int i=0;i<turma.size();i++){
+       ui->tabela->insertRow(i);
+       inserirNaTabela(turma[i],i);
+   }
+   atualizarEstatisticas();
+}
