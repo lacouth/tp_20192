@@ -54,10 +54,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../projeto_telecom/main.cpp \
 		../projeto_telecom/mainwindow.cpp \
-		../projeto_telecom/aluno.cpp moc_mainwindow.cpp
+		../projeto_telecom/aluno.cpp \
+		../projeto_telecom/turma.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		aluno.o \
+		turma.o \
 		moc_mainwindow.o
 DIST          = /opt/Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/common/unix.conf \
@@ -255,9 +257,11 @@ DIST          = /opt/Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
 		../projeto_telecom/projeto_telecom.pro ../projeto_telecom/mainwindow.h \
-		../projeto_telecom/aluno.h ../projeto_telecom/main.cpp \
+		../projeto_telecom/aluno.h \
+		../projeto_telecom/turma.h ../projeto_telecom/main.cpp \
 		../projeto_telecom/mainwindow.cpp \
-		../projeto_telecom/aluno.cpp
+		../projeto_telecom/aluno.cpp \
+		../projeto_telecom/turma.cpp
 QMAKE_TARGET  = projeto_telecom
 DESTDIR       = 
 TARGET        = projeto_telecom
@@ -677,8 +681,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../projeto_telecom/mainwindow.h ../projeto_telecom/aluno.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../projeto_telecom/main.cpp ../projeto_telecom/mainwindow.cpp ../projeto_telecom/aluno.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../projeto_telecom/mainwindow.h ../projeto_telecom/aluno.h ../projeto_telecom/turma.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../projeto_telecom/main.cpp ../projeto_telecom/mainwindow.cpp ../projeto_telecom/aluno.cpp ../projeto_telecom/turma.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../projeto_telecom/mainwindow.ui $(DISTDIR)/
 
 
@@ -821,6 +825,11 @@ moc_mainwindow.cpp: ../projeto_telecom/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../projeto_telecom/aluno.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto_telecom/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		moc_predefs.h \
 		/opt/Qt/5.13.0/gcc_64/bin/moc
 	/opt/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/ifpb/codes/tp_20192/build-projeto_telecom-Desktop-Debug/moc_predefs.h -I/opt/Qt/5.13.0/gcc_64/mkspecs/linux-clang -I/home/ifpb/codes/tp_20192/projeto_telecom -I/opt/Qt/5.13.0/gcc_64/include -I/opt/Qt/5.13.0/gcc_64/include/QtWidgets -I/opt/Qt/5.13.0/gcc_64/include/QtGui -I/opt/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/6.3.0 -I/usr/include/x86_64-linux-gnu/c++/6.3.0 -I/usr/include/c++/6.3.0/backward -I/usr/local/include -I/usr/lib/llvm-3.8/lib/clang/3.8.1/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../projeto_telecom/mainwindow.h -o moc_mainwindow.cpp
@@ -953,6 +962,11 @@ main.o: ../projeto_telecom/main.cpp ../projeto_telecom/mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../projeto_telecom/aluno.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto_telecom/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1069,6 +1083,11 @@ mainwindow.o: ../projeto_telecom/mainwindow.cpp ../projeto_telecom/mainwindow.h 
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../projeto_telecom/aluno.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../projeto_telecom/turma.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
 		ui_mainwindow.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1078,15 +1097,52 @@ mainwindow.o: ../projeto_telecom/mainwindow.cpp ../projeto_telecom/mainwindow.h 
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QHBoxLayout \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qheaderview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QLineEdit \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtextcursor.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtextformat.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QMenuBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qmenubar.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qmenu.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qaction.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QStatusBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qstatusbar.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtableview.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QToolBar \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/qtoolbar.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout \
 		/opt/Qt/5.13.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../projeto_telecom/mainwindow.cpp
 
@@ -1124,6 +1180,49 @@ aluno.o: ../projeto_telecom/aluno.cpp ../projeto_telecom/aluno.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
 		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o aluno.o ../projeto_telecom/aluno.cpp
+
+turma.o: ../projeto_telecom/turma.cpp ../projeto_telecom/turma.h \
+		../projeto_telecom/aluno.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QString \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/QVector \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt/5.13.0/gcc_64/include/QtCore/qpoint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o turma.o ../projeto_telecom/turma.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

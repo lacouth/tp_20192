@@ -7,7 +7,7 @@ QString Aluno::getNome() const
 
 void Aluno::setNome(const QString &value)
 {
-    if(value.size() > 3){
+    if(value.size() >= 3){
         nome = value;
     }
 }

@@ -1,6 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::atualizarEstatisticas()
+{
+    double maior = turma.maiorNota();
+    double menor = turma.menorNota();
+    double media = turma.mediaDaTurma();
+
+    ui->maiorNota->setText(QString::number(maior));
+    ui->menorNota->setText(QString::number(menor));
+    ui->media->setText(QString::number(media));
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -34,5 +45,21 @@ void MainWindow::on_pushButton_clicked()
     ui->tabela->setItem(qnt_linhas,1,new QTableWidgetItem(aluno.getMatricula()));
     ui->tabela->setItem(qnt_linhas,2,new QTableWidgetItem(QString::number(aluno.getMedia())));
     ui->tabela->setItem(qnt_linhas,3,new QTableWidgetItem(aluno.definirStatus()));
-    qDebug()<<nome<<matricula<<media;
+    turma.incluirAluno(aluno);
+    atualizarEstatisticas();
+
+}
+
+void MainWindow::on_btn_ordenar_clicked()
+{
+    turma.ordenar();
+    ui->tabela->clearContents();
+    for(int i = 0; i<turma.size();i++){
+
+        ui->tabela->setItem(i,0,new QTableWidgetItem(turma[i].getNome()));
+        ui->tabela->setItem(i,1,new QTableWidgetItem(turma[i].getMatricula()));
+        ui->tabela->setItem(i,2,new QTableWidgetItem(QString::number(turma[i].getMedia())));
+        ui->tabela->setItem(i,3,new QTableWidgetItem(turma[i].definirStatus()));
+
+    }
 }
