@@ -46,6 +46,21 @@ Aluno Turma::operator[](int indice)
     return turma[indice];
 }
 
+void Turma::salvarDados(QString nomeDoArquivo)
+{
+    QFile arquivo(nomeDoArquivo);
+
+    arquivo.open(QIODevice::WriteOnly);
+
+    QString linha;
+    for (auto a : turma){
+        linha = a.getNome() + "," + a.getMatricula() + "," + QString::number(a.getMedia()) + "\n";
+        arquivo.write(linha.toLocal8Bit());
+    }
+
+    arquivo.close();
+}
+
 Turma::Turma()
 {
 

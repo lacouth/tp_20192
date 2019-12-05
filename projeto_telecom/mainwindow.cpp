@@ -63,3 +63,17 @@ void MainWindow::on_btn_ordenar_clicked()
 
     }
 }
+
+void MainWindow::on_actionSalvar_triggered()
+{
+    QString nome_arquivo = QFileDialog::getSaveFileName(this,
+                                                        "Salvar Arquivo",
+                                                        "",
+                                                        "*.csv");
+   turma.salvarDados(nome_arquivo);
+}
+
+void MainWindow::on_actionCarregar_triggered()
+{
+    qDebug()<<"Menu carregar";
+}

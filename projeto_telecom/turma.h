@@ -4,6 +4,7 @@
 #include <QVector>
 #include <vector>
 #include <algorithm>
+#include <QFile>
 
 class Turma
 {
@@ -18,6 +19,8 @@ public:
     int size();
 
     Aluno operator[](int indice);
+
+    void salvarDados(QString nomeDoArquivo);
 
     Turma();
 };
