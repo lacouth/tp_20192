@@ -5,6 +5,8 @@
 #include <vector>
 #include <algorithm>
 #include <QFile>
+#include <QDebug>
+#include <QStringList>
 
 class Turma
 {
@@ -21,6 +23,7 @@ public:
     Aluno operator[](int indice);
 
     void salvarDados(QString nomeDoArquivo);
+    void carregarDados(QString nomeDoArquivo);
 
     Turma();
 };

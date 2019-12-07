@@ -75,5 +75,24 @@ void MainWindow::on_actionSalvar_triggered()
 
 void MainWindow::on_actionCarregar_triggered()
 {
-    qDebug()<<"Menu carregar";
+    QString nome_arquivo = QFileDialog::getOpenFileName(this,
+                                                        "Abrir arquivo",
+                                                        "",
+                                                        "*.csv");
+    turma.carregarDados(nome_arquivo);
+
+    for(int i = 0; i<turma.size();i++){
+        ui->tabela->insertRow(i);
+        ui->tabela->setItem(i,0,new QTableWidgetItem(turma[i].getNome()));
+        ui->tabela->setItem(i,1,new QTableWidgetItem(turma[i].getMatricula()));
+        ui->tabela->setItem(i,2,new QTableWidgetItem(QString::number(turma[i].getMedia())));
+        ui->tabela->setItem(i,3,new QTableWidgetItem(turma[i].definirStatus()));
+
+    }
+
+}
+
+void MainWindow::on_input_media_returnPressed()
+{
+    on_pushButton_clicked();
 }

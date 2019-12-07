@@ -71,6 +71,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(469, 577);
+        MainWindow->setStyleSheet(QString::fromUtf8(""));
         actionSalvar = new QAction(MainWindow);
         actionSalvar->setObjectName(QString::fromUtf8("actionSalvar"));
         actionCarregar = new QAction(MainWindow);
@@ -161,6 +162,7 @@ public:
         pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setEnabled(true);
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(117, 80, 123)"));
 
         verticalLayout_2->addWidget(pushButton);
 

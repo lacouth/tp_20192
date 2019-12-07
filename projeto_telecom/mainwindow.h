@@ -31,6 +31,8 @@ private slots:
 
     void on_actionCarregar_triggered();
 
+    void on_input_media_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 };

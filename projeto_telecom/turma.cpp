@@ -61,6 +61,29 @@ void Turma::salvarDados(QString nomeDoArquivo)
     arquivo.close();
 }
 
+void Turma::carregarDados(QString nomeDoArquivo)
+{
+    QFile arquivo(nomeDoArquivo);
+
+    arquivo.open(QIODevice::ReadOnly);
+    QString linha;
+    QStringList dados;
+    Aluno aluno;
+
+    while(! arquivo.atEnd()){
+        linha = arquivo.readLine();
+        dados = linha.split(",");
+        aluno.setNome(dados[0]);
+        aluno.setMatricula(dados[1]);
+        aluno.setMedia(dados[2].toDouble() );
+        incluirAluno(aluno);
+    }
+
+    arquivo.close();
+
+
+}
+
 Turma::Turma()
 {
 
