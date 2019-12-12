@@ -1,0 +1,36 @@
+<html >
+
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    </head>
+
+    <body>
+            <ul class="nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="contato.html">Contato</a>
+                    </li>
+                    
+                  </ul>
+        <div class="container" style="text-align: center">
+            <h1 id = "titulo" > Hello World!!!! </h1>
+            <h2> IFPB </h2>
+            <p>
+                aslkdfasdlkfj asdfkjaslkdfj asdkfljsadlkfj
+            </p>
+            <button onclick="mudarTitulo()" id="btn" type="button" class="btn btn-primary">Primary</button>
+        </div>
+
+        <script>    
+        var btn = document.getElementById('btn')
+        var titulo = document.getElementById('titulo')
+        
+        function mudarTitulo(){
+            titulo.innerHTML = "Oi HTML!"
+        }
+
+        </script>
+
+    </body>
+
+</html>
